@@ -1126,3 +1126,116 @@ html {
   height: 100%;
   border: none;
 }
+
+/* Projects Grid - Two columns */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Project Card - Flexbox layout */
+.project-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Project Header */
+.project-header {
+  margin-bottom: 1rem;
+}
+
+.project-header h3 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 0.25rem;
+}
+
+/* Project Timeline */
+.project-timeline {
+  display: block;
+  color: var(--text-color);
+  opacity: 0.6;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+
+/* Project Description */
+.project-description {
+  color: var(--text-color);
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  flex-grow: 0;
+}
+
+/* Project Tech Tags */
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: auto;
+  /* Push buttons to bottom */
+  padding-bottom: 1.5rem;
+}
+
+/* Project Links - Always at bottom */
+.project-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+  /* Stick to bottom of card */
+}
+
+/* Thesis Button in Projects - Remove underline */
+.project-card .thesis-button {
+  margin-top: 0;
+  text-decoration: none;
+  /* Remove underline */
+}
+
+.project-card .thesis-button:hover {
+  text-decoration: none;
+  /* Keep it removed on hover */
+}
+
+/* Demo Button Variant */
+.demo-button {
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+}
+
+.demo-button:hover {
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+}
+
+/* Responsive - One column on smaller screens */
+@media (max-width: 968px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    padding: 1.5rem;
+  }
+
+  .project-header h3 {
+    font-size: 1.25rem;
+  }
+}
