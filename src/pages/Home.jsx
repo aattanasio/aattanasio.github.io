@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { FaFilePdf } from 'react-icons/fa'
+import BachelorThesis from '../assets/thesis-bachelor.pdf'
+import MasterThesis from '../assets/thesis-master.pdf'
 
 const Home = () => {
+    const [showPDF, setShowPDF] = useState(null)
+
+    const openPDF = (pdfUrl) => {
+        setShowPDF(pdfUrl)
+    }
+
+    const closePDF = () => {
+        setShowPDF(null)
+    }
+
     return (
         <div className="page-container">
+            {/* Hero Section */}
             <section className="hero-section">
                 <div className="hero-content">
                     <h1 className="hero-title">
@@ -12,6 +26,7 @@ const Home = () => {
                 </div>
             </section>
 
+            {/* Education Section */}
             <section className="section">
                 <div className="container">
                     <h2 className="section-title">Education</h2>
@@ -23,10 +38,13 @@ const Home = () => {
                                 <span className="institution">Polytechnic University of Milan</span>
                                 <span className="period">2023 - 2025</span>
                                 <p>Completed a mixed academic track with a focus on practical software development and AI-related methodologies.</p>
-                                <ul className="achievements">
-                                    <li>Grading: 107/110</li>
-                                    <li>Thesis: A Computational Framework to Study Online Conspiracy Theories on Reddit After Epstein’s Death</li>
-                                </ul>
+                                <button
+                                    className="thesis-button"
+                                    onClick={() => openPDF(MasterThesis)}
+                                >
+                                    <FaFilePdf size={18} />
+                                    Master's Thesis
+                                </button>
                             </div>
                         </div>
 
@@ -37,35 +55,38 @@ const Home = () => {
                                 <span className="institution">University of Pisa</span>
                                 <span className="period">2019 - 2023</span>
                                 <p>Foundation in computer science, algorithms, and software development.</p>
-                                <ul className="achievements">
-                                    <li>Grading: 104/110</li>
-                                    <li>Thesis: Analysis of the Effects of Quarantine on Users of the Subreddit The_Donald</li>
-                                </ul>
+                                <button
+                                    className="thesis-button"
+                                    onClick={() => openPDF(BachelorThesis)}
+                                >
+                                    <FaFilePdf size={18} />
+                                    Bachelor's Thesis
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
+            {/* Work Experience Section */}
             <section className="section">
                 <div className="container">
-                    <h2 className="section-title">School-to-Work Program</h2>
+                    <h2 className="section-title">School-To-Work Experience</h2>
                     <div className="timeline">
                         <div className="timeline-item">
                             <div className="timeline-dot"></div>
                             <div className="timeline-content">
-                                <h3>Full Stack Developer</h3>
-                                <span className="institution">IDS GeoRadar s.r.l.</span>
-                                <span className="period">2020 - 2022</span>
+                                <h3>Software Developer</h3>
+                                <span className="institution">IDS Georadar S.r.l. - Pisa, Italy</span>
+                                <span className="period">11/2018-03/2019</span>
                                 <p>
-                                    Built and maintained full-stack applications using MERN stack.
-                                    Collaborated with designers and product managers to deliver features.
+                                    Developed control interface for a mechanical arm attachment used in
+                                    industrial testing equipment within an agile team environment.
                                 </p>
                                 <ul className="achievements">
-                                    <li>Developed 10+ client projects</li>
-                                    <li>Increased user engagement by 60%</li>
-                                    <li>Optimized database queries</li>
-                                    <li>Implemented real-time features with WebSockets</li>
+                                    <li>Built responsive Qt-based control interface with real-time feedback</li>
+                                    <li>Implemented multithreaded architecture for system stability</li>
+                                    <li>Collaborated using Git and Scrum in 2-week sprints</li>
                                 </ul>
                             </div>
                         </div>
@@ -73,24 +94,38 @@ const Home = () => {
                         <div className="timeline-item">
                             <div className="timeline-dot"></div>
                             <div className="timeline-content">
-                                <h3>Junior Developer</h3>
-                                <span className="institution">Digital Agency</span>
-                                <span className="period">2019 - 2020</span>
+                                <h3>Print Production Assistant</h3>
+                                <span className="institution">Pixel & Co. - Msida, Malta</span>
+                                <span className="period">07/2018 - 08/2018</span>
                                 <p>
-                                    Contributed to various web development projects. Learned modern development
-                                    practices and worked in an agile environment.
+                                    International work experience in print production.
                                 </p>
                                 <ul className="achievements">
-                                    <li>Completed 20+ tickets per sprint</li>
-                                    <li>Learned React and Node.js</li>
-                                    <li>Improved testing coverage to 80%</li>
-                                    <li>Participated in code reviews</li>
+                                    <li>Gained cross-cultural work experience in an international setting</li>
+                                    <li>Managed client communications and design specifications</li>
+                                    <li>Developed adaptability working in a new cultural environment</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
+            {/* PDF Modal */}
+            {showPDF && (
+                <div className="pdf-modal" onClick={closePDF}>
+                    <div className="pdf-modal-content" onClick={(e) => e.stopPropagation()}>
+                        <button className="pdf-close-button" onClick={closePDF}>
+                            ✕
+                        </button>
+                        <iframe
+                            src={showPDF}
+                            title="Thesis PDF"
+                            className="pdf-iframe"
+                        />
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

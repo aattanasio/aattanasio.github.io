@@ -998,3 +998,131 @@ html {
   background: var(--primary-color);
   color: white;
 }
+
+/* Timeline - Remove hover effects */
+.timeline-item:hover .timeline-dot {
+  transform: none;
+  /* Remove scale effect */
+  box-shadow: 0 0 0 4px var(--primary-color);
+  /* Keep original shadow */
+}
+
+.timeline-content {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: none;
+  /* Remove transition */
+}
+
+.timeline-content:hover {
+  box-shadow: var(--shadow);
+  /* Keep same shadow on hover */
+  transform: none;
+  /* Remove translateY effect */
+}
+
+/* Thesis Button */
+.thesis-button {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+
+.thesis-button:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+.thesis-button:active {
+  transform: translateY(0);
+}
+
+/* Optional: Different style for each thesis button */
+.thesis-button:nth-of-type(1) {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.thesis-button:nth-of-type(1):hover {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+}
+
+/* PDF Modal */
+.pdf-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.pdf-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 90vh;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.pdf-close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.pdf-close-button:hover {
+  background: #4f46e5;
+  transform: rotate(90deg);
+}
+
+.pdf-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
