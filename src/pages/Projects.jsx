@@ -1,54 +1,67 @@
 import React from 'react'
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 
 const Projects = () => {
     const projects = [
         {
             id: 1,
-            title: 'E-Commerce Platform',
-            description: 'A full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment integration, and admin dashboard.',
-            technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redux'],
-            github: 'https://github.com/yourusername/project1',
-            demo: 'https://project1-demo.com'
+            title: 'GymMe - Flutter Application',
+            description: 'A cross-platform Flutter application for managing gym networks, activities, and user bookings. Features role-based access with admin controls for gym management and user interfaces for browsing and booking workout sessions. Includes real-time schedules, location-based search, and integrated payment processing.',
+            technologies: ['Flutter', 'Dart', 'Firebase', 'Google Maps API', 'Stripe', 'Cloud Functions', 'Google OAuth'],
+            timeline: '03/2025 - 06/2025',
+            github: 'https://github.com/sampozz/GymMe',
+            demo: 'https://app.sampoz.tech'
         },
         {
             id: 2,
-            title: 'Task Management App',
-            description: 'Real-time collaborative task manager with drag-and-drop functionality. Built with React and Firebase for instant synchronization.',
-            technologies: ['React', 'Firebase', 'Material-UI', 'React DnD'],
-            github: 'https://github.com/yourusername/project2',
-            demo: 'https://project2-demo.com'
+            title: 'RAG-based Question Answering System',
+            description: 'Comprehensive implementation of advanced NLP techniques for question answering using Retrieval-Augmented Generation (RAG), toxicity detection, topic modeling, and large language model evaluation.',
+            technologies: ['Python', 'Hugging Face', 'PyTorch', 'Natural Language Processing'],
+            timeline: '05/2025 - 06/2025',
+            github: 'https://github.com/martinimarcello00/NLP-project'
         },
         {
             id: 3,
-            title: 'Weather Dashboard',
-            description: 'Beautiful weather application with location-based forecasts, interactive maps, and smooth animations. Integrates multiple weather APIs.',
-            technologies: ['React', 'OpenWeather API', 'Chart.js', 'CSS3'],
-            github: 'https://github.com/yourusername/project3',
-            demo: 'https://project3-demo.com'
+            title: 'TCP/IP Client-Server application',
+            description: 'Socket programming in C. Implemented a client-server communication system using TCP/IP sockets in C. Features robust protocol handling and message exchange logic. Includes a detailed project report explaining the architecture, protocol design, and testing methodology.',
+            technologies: ['C', 'TCP/IP', 'Socket Programming', 'Client-Server Architecture', 'Protocol Design'],
+            timeline: '09/2022 - 01/2023',
+            github: 'https://github.com/aattanasio/UniPi/tree/main/Reti%20Informatiche'
         },
         {
             id: 4,
-            title: 'Social Media Analytics',
-            description: 'Dashboard for tracking social media metrics across multiple platforms. Features real-time data visualization and custom reports.',
-            technologies: ['React', 'D3.js', 'Express', 'PostgreSQL'],
-            github: 'https://github.com/yourusername/project4',
-            demo: 'https://project4-demo.com'
+            title: 'Business Economics and Organization',
+            description: 'Study of Geox S.p.A. business model: SWOT, costs/revenues, financial indicators, balance sheets, strategic projections. Deliverable: full report and suggestions.',
+            technologies: ['Business Model Development', 'Cost and Revenue Analysis', 'Income Statement', 'Financial Statement Analysis', 'Economic and Financial Condition Assessment'],
+            timeline: '03/2021 - 06/2021',
         },
         {
             id: 5,
-            title: 'AI Chat Application',
-            description: 'Intelligent chatbot application using natural language processing. Includes conversation history and personalized responses.',
-            technologies: ['React', 'Python', 'TensorFlow', 'WebSockets'],
-            github: 'https://github.com/yourusername/project5',
-            demo: 'https://project5-demo.com'
+            title: 'Robocup Jr. - Rescue Maze',
+            description: 'Design of autonomous LEGO EV3 robots: sensors, pathfinding, object grabbing.',
+            technologies: ['Robotics', 'LEGO Mindstorms EV3', 'Path Navigation Algorithms', 'Object Retrieval', 'C++', 'C'],
+            timeline: '01/2018 - 10/2018',
         },
         {
             id: 6,
-            title: 'Portfolio Builder',
-            description: 'No-code tool for creating professional portfolios. Drag-and-drop interface with multiple templates and hosting options.',
-            technologies: ['React', 'Next.js', 'Tailwind CSS', 'Vercel'],
-            github: 'https://github.com/yourusername/project6',
-            demo: 'https://project6-demo.com'
+            title: 'ZeroRobotics',
+            description: 'Competition with simulators for SPHERES microrobots on the ISS: orbit control, docking, cooperative control.',
+            technologies: ['Aerospace Robotics', 'Satellite Programming', 'SPHERES Robots', 'International Space Station', 'C', 'Algorithm Design'],
+            timeline: '06/2017 - 07/2017',
+        },
+        {
+            id: 7,
+            title: 'Programming the Turing Machine',
+            description: 'Turing machine simulator: tape, states, transitions, step-by-step. Motivation: understanding computation models.',
+            technologies: ['Turing Machine', 'Automata Theory', 'Computability', 'Algorithm Design', 'Simulator Development'],
+            timeline: '02/2017 - 04/2017',
+        },
+        {
+            id: 8,
+            title: 'Rome Cup',
+            description: 'LEGO NXT robot for Rescue Line competitions: autonomous navigation, object collection, reactive sequences. Strengths: team cohesion, rapid iteration.',
+            technologies: ['Robotics', 'LEGO Mindstorms NX', 'Path Navigation Algorithms', 'Object Retrieval', 'C++'],
+            timeline: '01/2017 - 03/2017',
         }
     ]
 
@@ -58,7 +71,7 @@ const Projects = () => {
                 <div className="container">
                     <h1 className="page-title">My Projects</h1>
                     <p className="page-subtitle">
-                        A collection of projects I've built to solve real-world problems
+                        A collection of academic coursework, competitions, and personal projects showcasing my technical skills and problem-solving abilities
                     </p>
 
                     <div className="projects-grid">
@@ -66,6 +79,7 @@ const Projects = () => {
                             <div key={project.id} className="project-card">
                                 <div className="project-header">
                                     <h3>{project.title}</h3>
+                                    <span className="project-timeline">{project.timeline}</span>
                                 </div>
                                 <p className="project-description">{project.description}</p>
                                 <div className="project-tech">
@@ -74,22 +88,28 @@ const Projects = () => {
                                     ))}
                                 </div>
                                 <div className="project-links">
-                                    <a
-                                        href={project.github}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="btn btn-small"
-                                    >
-                                        GitHub
-                                    </a>
-                                    <a
-                                        href={project.demo}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="btn btn-small btn-primary"
-                                    >
-                                        Live Demo
-                                    </a>
+                                    {project.github && (
+                                        <a
+                                            href={project.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="thesis-button"
+                                        >
+                                            <FaGithub size={18} />
+                                            GitHub
+                                        </a>
+                                    )}
+                                    {project.demo && (
+                                        <a
+                                            href={project.demo}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="thesis-button demo-button"
+                                        >
+                                            <FaExternalLinkAlt size={16} />
+                                            Live Demo
+                                        </a>
+                                    )}
                                 </div>
                             </div>
                         ))}

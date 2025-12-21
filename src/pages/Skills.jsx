@@ -32,12 +32,33 @@ const Skills = () => {
         <div className="page-container">
             <section className="section">
                 <div className="container">
+                    {/*
+                    <h1 className="page-title">Certifications</h1>
+                    <div className="certifications">
+                        <div className="cert-grid">
+                            <div className="cert-card">
+                                <h4>AWS Certified Solutions Architect</h4>
+                                <p>Amazon Web Services</p>
+                                <span className="cert-year">2023</span>
+                            </div>
+                            <div className="cert-card">
+                                <h4>React Advanced Certification</h4>
+                                <p>Meta (Facebook)</p>
+                                <span className="cert-year">2022</span>
+                            </div>
+                            <div className="cert-card">
+                                <h4>Full Stack Web Development</h4>
+                                <p>freeCodeCamp</p>
+                                <span className="cert-year">2021</span>
+                            </div>
+                        </div>
+                    </div>
+                    */}
+
                     <h1 className="page-title">Skills & Expertise</h1>
-                    <p className="page-subtitle">
-                        Technologies and tools I work with to bring ideas to life
-                    </p>
 
                     <div className="skills-container">
+
                         {Object.entries(skillsData).map(([category, data]) => (
                             <div key={category} className="skill-category-card">
                                 <div className="skill-header">
@@ -57,27 +78,6 @@ const Skills = () => {
                                 </div>
                             </div>
                         ))}
-                    </div>
-
-                    <div className="certifications">
-                        <h2 className="section-title">Certifications</h2>
-                        <div className="cert-grid">
-                            <div className="cert-card">
-                                <h4>AWS Certified Solutions Architect</h4>
-                                <p>Amazon Web Services</p>
-                                <span className="cert-year">2023</span>
-                            </div>
-                            <div className="cert-card">
-                                <h4>React Advanced Certification</h4>
-                                <p>Meta (Facebook)</p>
-                                <span className="cert-year">2022</span>
-                            </div>
-                            <div className="cert-card">
-                                <h4>Full Stack Web Development</h4>
-                                <p>freeCodeCamp</p>
-                                <span className="cert-year">2021</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
