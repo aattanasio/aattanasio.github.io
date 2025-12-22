@@ -1,13 +1,68 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { FaFilePdf } from 'react-icons/fa'
+import CVPdf from '../assets/cv.pdf'
 
 const CV = () => {
+    const [showPDF, setShowPDF] = useState(false)
+
+    const openPDF = () => {
+        setShowPDF(true)
+    }
+
+    const closePDF = () => {
+        setShowPDF(false)
+    }
+
+    useEffect(() => {
+        if (showPDF) {
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+            const navbar = document.querySelector('.navbar')
+            if (navbar) {
+                navbar.style.transition = 'none'
+                navbar.style.paddingRight = `${scrollbarWidth}px`
+                setTimeout(() => {
+                    navbar.style.transition = ''
+                }, 0)
+            }
+            document.body.style.overflow = 'hidden'
+            document.body.style.paddingRight = `${scrollbarWidth}px`
+        } else {
+            const navbar = document.querySelector('.navbar')
+            if (navbar) {
+                navbar.style.transition = 'none'
+                navbar.style.paddingRight = '0px'
+                setTimeout(() => {
+                    navbar.style.transition = ''
+                }, 0)
+            }
+            document.body.style.overflow = 'unset'
+            document.body.style.paddingRight = '0px'
+        }
+
+        return () => {
+            document.body.style.overflow = 'unset'
+            document.body.style.paddingRight = '0px'
+            const navbar = document.querySelector('.navbar')
+            if (navbar) {
+                navbar.style.transition = 'none'
+                navbar.style.paddingRight = '0px'
+                setTimeout(() => {
+                    navbar.style.transition = ''
+                }, 0)
+            }
+        }
+    }, [showPDF])
+
     return (
         <div className="page-container">
             <section className="section">
                 <div className="container cv-container">
                     <div className="cv-header">
                         <h1 className="page-title">Curriculum Vitae</h1>
-                        <button className="btn btn-primary">Download PDF</button>
+                        <button className="fancy-button" onClick={openPDF}>
+                            <FaFilePdf size={18} />
+                            View PDF
+                        </button>
                     </div>
 
                     <div className="cv-section">
@@ -15,9 +70,9 @@ const CV = () => {
                         <div className="cv-content">
                             <p><strong>Name:</strong> Asja Attanasio</p>
                             <p><strong>Location:</strong> Milan, Italy</p>
-                            <p><strong>Email:</strong> asja.attanasio@example.com</p>
-                            <p><strong>LinkedIn:</strong> linkedin.com/in/asjaattanasio</p>
-                            <p><strong>GitHub:</strong> github.com/asjaattanasio</p>
+                            <p><strong>Email:</strong> <a href="mailto:asja.attanasio@gmail.com">asja.attanasio@gmail.com</a></p>
+                            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/asjaattanasio/" target="_blank" rel="noopener noreferrer">linkedin.com/in/asjaattanasio</a></p>
+                            <p><strong>GitHub:</strong> <a href="https://github.com/aattanasio" target="_blank" rel="noopener noreferrer">github.com/aattanasio</a></p>
                         </div>
                     </div>
 
@@ -114,16 +169,23 @@ const CV = () => {
                         </div>
                     </div>
 
-                    {/*
                     <div className="cv-section">
                         <h2>Certifications</h2>
                         <ul className="cv-list">
-                            <li>AWS Certified Solutions Architect - Amazon Web Services (2023)</li>
-                            <li>React Advanced Certification - Meta (2022)</li>
-                            <li>Full Stack Web Development - freeCodeCamp (2021)</li>
+                            <li>Scaling Networks - Cisco CCNA R&S (2019)</li>
+                            <li>Routing and Switching Essential - Cisco CCNA R&S (2018)</li>
+                            <li>Introduction to Networks - Cisco CCNA R&S (2017)</li>
                         </ul>
                     </div>
-                    */}
+
+                    <div className="cv-section">
+                        <h2>Volunteering</h2>
+                        <ul className="cv-list">
+                            <li>Ambulance Service (2018 – 2022)</li>
+                            <li>UNICEF (2017 – 2018)</li>
+                        </ul>
+                    </div>
+
                     <div className="cv-section">
                         <h2>Languages</h2>
                         <ul className="cv-list">
@@ -134,6 +196,22 @@ const CV = () => {
                     </div>
                 </div>
             </section>
+
+            {/* PDF Modal */}
+            {showPDF && (
+                <div className="pdf-modal" onClick={closePDF}>
+                    <div className="pdf-modal-content" onClick={(e) => e.stopPropagation()}>
+                        <button className="pdf-close-button" onClick={closePDF}>
+                            ✕
+                        </button>
+                        <iframe
+                            src={CVPdf}
+                            title="CV PDF"
+                            className="pdf-iframe"
+                        />
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

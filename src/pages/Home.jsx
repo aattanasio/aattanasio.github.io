@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { useTheme } from '../context/ThemeContext'
 import { FaFilePdf, FaLinkedin, FaGithub } from 'react-icons/fa'
 import { MdEmail, MdLocationOn } from 'react-icons/md'
@@ -18,6 +18,46 @@ const Home = () => {
     const closePDF = () => {
         setShowPDF(null)
     }
+
+    useEffect(() => {
+        if (showPDF) {
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+            const navbar = document.querySelector('.navbar')
+            if (navbar) {
+                navbar.style.transition = 'none'
+                navbar.style.paddingRight = `${scrollbarWidth}px`
+                setTimeout(() => {
+                    navbar.style.transition = ''
+                }, 0)
+            }
+            document.body.style.overflow = 'hidden'
+            document.body.style.paddingRight = `${scrollbarWidth}px`
+        } else {
+            const navbar = document.querySelector('.navbar')
+            if (navbar) {
+                navbar.style.transition = 'none'
+                navbar.style.paddingRight = '0px'
+                setTimeout(() => {
+                    navbar.style.transition = ''
+                }, 0)
+            }
+            document.body.style.overflow = 'unset'
+            document.body.style.paddingRight = '0px'
+        }
+
+        return () => {
+            document.body.style.overflow = 'unset'
+            document.body.style.paddingRight = '0px'
+            const navbar = document.querySelector('.navbar')
+            if (navbar) {
+                navbar.style.transition = 'none'
+                navbar.style.paddingRight = '0px'
+                setTimeout(() => {
+                    navbar.style.transition = ''
+                }, 0)
+            }
+        }
+    }, [showPDF])
 
     return (
         <div className="page-container">
@@ -52,7 +92,7 @@ const Home = () => {
                                 <span className="period">2023 - 2025</span>
                                 <p>Completed a mixed academic track with a focus on practical software development and AI-related methodologies.</p>
                                 <button
-                                    className="thesis-button"
+                                    className="fancy-button"
                                     onClick={() => openPDF(MasterThesis)}
                                 >
                                     <FaFilePdf size={18} />
@@ -69,7 +109,7 @@ const Home = () => {
                                 <span className="period">2019 - 2023</span>
                                 <p>Foundation in computer science, algorithms, and software development.</p>
                                 <button
-                                    className="thesis-button"
+                                    className="fancy-button"
                                     onClick={() => openPDF(BachelorThesis)}
                                 >
                                     <FaFilePdf size={18} />
