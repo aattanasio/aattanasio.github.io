@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { useTheme } from '../context/ThemeContext'
 import { FaFilePdf } from 'react-icons/fa'
 import BachelorThesis from '../assets/thesis-bachelor.pdf'
 import MasterThesis from '../assets/thesis-master.pdf'
+import introVideoLight from '../assets/intro-light.mp4'
+import introVideoDark from '../assets/intro-dark.mp4'
 
 const Home = () => {
     const [showPDF, setShowPDF] = useState(null)
+    const { darkMode, toggleTheme } = useTheme()
 
     const openPDF = (pdfUrl) => {
         setShowPDF(pdfUrl)
@@ -19,12 +23,20 @@ const Home = () => {
             {/* Hero Section */}
             <section className="hero-section">
                 <div className="hero-content">
-                    <h1 className="hero-title">
-                        Hi, I'm <span className="highlight">Asja Attanasio</span>
-                    </h1>
+                    <div className="hero-video-container">
+                        <video
+                            className="hero-video"
+                            src={darkMode ? introVideoDark : introVideoLight}
+                            autoPlay
+                            muted
+                            playsInline
+                            key={darkMode}
+                        />
+                    </div>
                     <p className="hero-subtitle">Software Engineer | Developer | Problem Solver</p>
                 </div>
             </section>
+
 
             {/* Education Section */}
             <section className="section">
@@ -110,6 +122,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+
 
             {/* PDF Modal */}
             {showPDF && (
