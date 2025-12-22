@@ -43,7 +43,7 @@ const Skills = () => {
                     </div>
                     */}
 
-                    <h1 className="page-title">Skills & Expertise</h1>
+                    <h1 className="page-title">Skills</h1>
                     <p className="page-subtitle">Technical expertise in programming languages, frameworks, tools, and technologies.</p>
 
                     <div className="skills-container">

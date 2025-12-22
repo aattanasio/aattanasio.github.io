@@ -204,9 +204,6 @@ const Home = () => {
             {showPDF && (
                 <div className="pdf-modal" onClick={closePDF}>
                     <div className="pdf-modal-content" onClick={(e) => e.stopPropagation()}>
-                        <button className="pdf-close-button" onClick={closePDF}>
-                            ✕
-                        </button>
                         <iframe
                             src={showPDF}
                             title="Thesis PDF"
