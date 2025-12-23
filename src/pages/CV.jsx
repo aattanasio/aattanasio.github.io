@@ -5,8 +5,19 @@ import CVPdf from '../assets/cv.pdf'
 const CV = () => {
     const [showPDF, setShowPDF] = useState(false)
 
+    const isMobile = () => {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+            window.innerWidth <= 768
+    }
+
     const openPDF = () => {
-        setShowPDF(true)
+        if (isMobile()) {
+            // On mobile, open PDF in a new tab for full screen experience
+            window.open(CVPdf, '_blank')
+        } else {
+            // On desktop, show in modal
+            setShowPDF(true)
+        }
     }
 
     const closePDF = () => {
@@ -61,7 +72,7 @@ const CV = () => {
                         <h1 className="page-title">Curriculum Vitae</h1>
                         <button className="fancy-button" onClick={openPDF}>
                             <FaFilePdf size={18} />
-                            View PDF
+                            <span>View PDF</span>
                         </button>
                     </div>
 

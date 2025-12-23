@@ -796,6 +796,32 @@ body {
   flex-shrink: 0;
 }
 
+/* Mobile Contact Buttons */
+@media (max-width: 768px) {
+  .contact-buttons {
+    justify-content: center;
+    padding-left: 0;
+    flex-wrap: nowrap;
+  }
+
+  .contact-button {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    padding: 0;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .contact-button span {
+    display: none;
+  }
+
+  .contact-button svg {
+    margin: 0;
+  }
+}
+
 .form-group {
   margin-bottom: 1.5rem;
 }
@@ -1064,6 +1090,36 @@ body {
   .cv-header {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .cv-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cv-header .fancy-button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    padding: 0;
+    margin-top: 0;
+    justify-content: center;
+    gap: 0;
+    min-width: unset;
+  }
+
+  .cv-header .fancy-button span {
+    display: none;
+  }
+
+  .cv-header .fancy-button svg {
+    margin: 0;
+  }
+
+  .cv-header .page-title {
+    margin-bottom: 0;
+    font-size: 1.8rem;
   }
 
   .cv-item-header {

@@ -11,8 +11,19 @@ const Home = () => {
     const [showPDF, setShowPDF] = useState(null)
     const { darkMode, toggleTheme } = useTheme()
 
+    const isMobile = () => {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+            window.innerWidth <= 768
+    }
+
     const openPDF = (pdfUrl) => {
-        setShowPDF(pdfUrl)
+        if (isMobile()) {
+            // On mobile, open PDF in a new tab for full screen experience
+            window.open(pdfUrl, '_blank')
+        } else {
+            // On desktop, show in modal
+            setShowPDF(pdfUrl)
+        }
     }
 
     const closePDF = () => {
